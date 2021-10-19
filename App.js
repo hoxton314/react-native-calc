@@ -16,13 +16,20 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       data: '',
-      output: ''
+      output: '',
+      regex: ['/', '*', '-', '+', '.']
     }
   }
   handleCallback = (childData) => {
     switch (childData) {
       case 'C':
-        this.setState({ data: '',output:'' })
+        if (this.state.data.length == 0) {
+          this.setState({ output: '' })
+        } else {
+          let dat = (this.state.data).slice(0, -1)
+          this.setState({ data: dat })
+        }
+
         break;
       case '=':
         let val
@@ -31,12 +38,15 @@ export default class App extends React.Component {
         } catch (error) {
           val = 'error'
         }
-        if(val==''){val='error'}
+        if (val == '') { val = 'error' }
         this.setState({ output: val })
         break;
       default:
-        let data = this.state.data + childData
-        this.setState({ data: data })
+        if (!(this.state.regex.some(x => x == this.state.data.slice(-1)) && this.state.regex.some(x => x == childData))) {
+          let data = this.state.data + childData
+          this.setState({ data: data })
+        }
+
         break;
     }
 

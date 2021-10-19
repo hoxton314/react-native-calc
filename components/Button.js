@@ -10,7 +10,7 @@ export default class Button extends Component {
     }
 
     render() {
-        function onPress(e){
+        function onPress(e) {
             //console.log(this.state.cipher)
             this.props.buttonCallback(this.state.cipher);
             e.preventDefault()
@@ -28,11 +28,11 @@ export default class Button extends Component {
 
 
 const styles = StyleSheet.create({
-    button:{
-    fontSize:50,
-    color:'#f3efe8',
+    button: {
+        fontSize: 50,
+        color: '#f3efe8',
     },
-    touchable:{
-        padding:10
+    touchable: {
+        padding: 20
     }
-  });
+});
