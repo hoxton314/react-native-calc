@@ -33,6 +33,6 @@ const styles = StyleSheet.create({
         color: '#f3efe8',
     },
     touchable: {
-        padding: 20
+        padding: 40
     }
 });
